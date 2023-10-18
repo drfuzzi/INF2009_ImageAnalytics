@@ -1,4 +1,4 @@
-**Lab Manual: Image Analytics with Raspberry Pi 4 using Web Camera**
+**Image Analytics with Raspberry Pi 4 using Web Camera**
 
 **Objective:** By the end of this session, participants will understand how to set up a web camera with the Raspberry Pi 4, capture images, and perform basic image analytics.
 
