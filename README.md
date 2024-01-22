@@ -1,21 +1,23 @@
 **Image Analytics with Raspberry Pi 4 using Web Camera**
 
-**Objective:** By the end of this session, participants will understand how to set up a web camera with the Raspberry Pi 4, capture images, and perform basic image analytics.
+**Objective:** By the end of this session, participants will understand how to set up a web camera with the Raspberry Pi 4, capture images, and perform basic and advanced image analytics.
 
 ---
 
 **Prerequisites:**
 1. Raspberry Pi 4 with Raspbian OS installed.
 2. MicroSD card (16GB or more recommended).
-3. Web camera compatible with Raspberry Pi.
+3. Web camera compatible with Raspberry Pi (Will be using USB Webcam for this experiment).
 4. Internet connectivity (Wi-Fi).
 5. Basic knowledge of Python and Linux commands.
 
 ---
 
 **1. Introduction (10 minutes)**
-- Overview of image analytics.
-- Importance and applications of image processing using Raspberry Pi.
+Computer vision has been a very popular field since the advent of digital systems. However computer vision on the edge devices such as Raspberry Pi is challenging due to resource contraints. Edge Computer Vision (ECV) has emerged as a transformative technology, with [Gartner](https://www.linkedin.com/pulse/what-edge-computer-vision-how-get-started-deep-block-net) recognizing it as one of the top emerging technologies of 2023. ECV offers several benefits such as 1) they can operate in real-time or near-real-time, providing instant insights and enabling immediate actions, 2) they offer enhanced privacy and security and 3) It reduces dependency on network connectivity or relaxes the bandwidth requirements as some processing will be done within. 
+In this lab, few basic and advanced image processing tasks on edge devices is introduced. An overview of the experiments/setup is as follows:
+![image](https://github.com/drfuzzi/INF2009_ImageAnalytics/assets/52023898/fc8cc7f0-ff75-4548-8dbe-889b2abface4)
+
 
 **2. Setting up the Raspberry Pi (15 minutes)**
 - Booting up the Raspberry Pi.
@@ -25,6 +27,8 @@
   sudo apt update
   sudo apt upgrade
   ```
+- Set up a [virtual environment](https://github.com/drfuzzi/INF2009_Setup) for this experiment (to avoid conflicts in libraries) using the details mentioned in Section 4.a
+- Activate the virtual environment and complete the next steps within the environment
 
 **3. Connecting and Testing the Web Camera (15 minutes)**
 - Physically connecting the web camera to the Raspberry Pi.
@@ -36,16 +40,15 @@
   ```bash
   fswebcam image.jpg
   ```
+- Observe the image (through VNC) in the current directory to ensure the image is correctly captured.
 
-**4. Introduction to Image Processing with Python (25 minutes)**
+**4. Introduction to Real-time Image Processing with Python (25 minutes)**
 - Installing OpenCV:
   ```bash
-  sudo pip3 install opencv-python
+  pip install opencv-python  
   ```
-- Basic image processing tasks using OpenCV:
-  - Reading and displaying images.
-  - Converting images to grayscale.
-  - Image thresholding and edge detection.
+- The [sample code](Codes/image_capture_display.py) shows the code to read frames from a webcam and then based on the intensity range for each colour channel (RGB), how to segment the image into red green and blue images.
+- Expand the code to segment another colour (say yellow)
 
 **5. Real-time Image Capture and Analysis (25 minutes)**
 - Capturing real-time video feed from the web camera using OpenCV.
