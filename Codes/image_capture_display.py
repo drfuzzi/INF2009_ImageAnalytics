@@ -9,7 +9,7 @@ boundaries = [
 	([86, 31, 4], [220, 88, 50]), # For Blue
 	([25, 90, 4], [62, 200, 50])] # For Green 
 
-#%% Normalize the Image for display
+#%% Normalize the Image for display (Optional)
 def normalizeImg (Img):
     Img= np.float64(Img) #Converting to float to avoid errors due to division
     norm_img = (Img - np.min(Img))/(np.max(Img) - np.min(Img))
@@ -36,17 +36,19 @@ while True:
         	# create NumPy arrays from the boundaries
         	lower = np.array(lower, dtype = "uint8")
         	upper = np.array(upper, dtype = "uint8")
-        	# find the colors within the specified boundaries and apply the mask
+        	
+            # find the colors within the specified boundaries and apply the mask (basically segmenting for colours)
         	mask = cv2.inRange(frame, lower, upper)
         	output.append(cv2.bitwise_and(frame, frame, mask = mask)) #Segmented frames are appended
         
+        # Output is appeneded to be of size Pixels X 3 (for R, G, B)
         red_img = normalizeImg(output[0])
         green_img = normalizeImg(output[1])
         blue_img = normalizeImg(output[2])
        
         # horizontal Concatination for displaying the images and colour segmentations
         catImg = cv2.hconcat([frame,red_img,green_img,blue_img])
-        cv2.imshow("feed",catImg)
+        cv2.imshow("Images with Colours",catImg)
         
         if cv2.waitKey(10) == ord('q'):
            break
