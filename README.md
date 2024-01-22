@@ -69,8 +69,8 @@ In this lab, few basic and advanced image processing tasks on edge devices is in
   pip install dlib
   pip install face_recognition  
   ```
-- A [sample code](Codes/image_face_capture.py) is employed to detect the face based on Dlib's HoG feature extraction + Support Vector Machine (SVM) approach which is very light weight when comapred to the approach emplpoyed in above section. Observe the speed up.
-- A [sample code](Codes/image_live_facial_landmarks.py) is employed to extract the facial landmarks using the [face_recognition](https://github.com/ageitgey/face_recognition) libary. The approach is based on the facial landmark annotations as done in this [work](https://ibug.doc.ic.ac.uk/resources/facial-point-annotations/). A sample image with face landmarks is as shown below:
+- Try the [sample code](Codes/image_face_capture.py) to detect the face based on Dlib's HoG feature extraction + Support Vector Machine (SVM) approach which is very light weight when comapred to the approach emplpoyed in above section. Observe the speed up.
+- Try the [sample code](Codes/image_live_facial_landmarks.py) to extract the facial landmarks using the [face_recognition](https://github.com/ageitgey/face_recognition) libary. The approach is based on the facial landmark annotations as done in this [work](https://ibug.doc.ic.ac.uk/resources/facial-point-annotations/). A sample image with face landmarks is as shown below:
   ![image](https://github.com/drfuzzi/INF2009_ImageAnalytics/assets/52023898/39ed6577-dbcb-4d3b-be02-5904ac15217d)
 
 ---
