@@ -76,7 +76,7 @@ In this lab, few basic and advanced image processing tasks on edge devices is in
 ---
 
 **Homework/Extended Activities:**
-1. Explore more advanced OpenCV functionalities like SIFT, SURF, and ORB for feature detection.
+1. Explore more advanced OpenCV functionalities like SIFT, SURF, and ORB for feature detection. These features alongside HoG could be used for image matching (e.g. face recognition)
 2. Build an eye blink detection system for drowsiness detection.  
 
 ---
