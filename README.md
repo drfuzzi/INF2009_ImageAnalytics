@@ -18,7 +18,6 @@ Computer vision has been a very popular field since the advent of digital system
 In this lab, few basic and advanced image processing tasks on edge devices is introduced. An overview of the experiments/setup is as follows:
 ![image](https://github.com/drfuzzi/INF2009_ImageAnalytics/assets/52023898/fc8cc7f0-ff75-4548-8dbe-889b2abface4)
 
-
 **2. Setting up the Raspberry Pi (15 minutes)**
 - Booting up the Raspberry Pi.
 - Setting up Wi-Fi/Ethernet.
@@ -56,29 +55,36 @@ In this lab, few basic and advanced image processing tasks on edge devices is in
   ```bash
   pip install scikit-image  
   ```
-- Computer vision employs feature extraction from images. Some important image features include edges and textures. In this section we will employ a feature named histogram of gradients (HoG) which is widely employed for face recognition and other tasks. HoG involves gradient operation (basically extracting edges) on various image patches (by dividing the image into blocks). A [sample code](Codes/image_hog_feature.py) involving scikit-image is employed for the same. The code displays the dominant HoG image for each image patch overlaid on the actual image. It has to be noted that OpenCV can also be employed for the same task, but the visualization using scikit-image is better compared to that from OpenCV.
-- Note the usage of colour (RGB) to gray scale converion employed before HoG feature extraction.
-- Run the code with and without resizing the image and observe the resultant frame rate. It is important to note that for edge computing, downsizing the image will speed up the compute and many such informed decisions are critical.
-- Change the patch size in line 25 (feature.hog) and observe the changes in the results.
+- Computer vision employs feature extraction from images. Some important image features include edges and textures. In this section we will employ a feature named histogram of gradients (HoG) which is widely employed for face recognition and other tasks. HoG involves gradient operation (basically extracting edges) on various image patches (by dividing the image into blocks). A [sample code](Codes/image_hog_feature.py) involving scikit-image is employed for the same. The code displays the dominant HoG image for each image patch overlaid on the actual image. It has to be noted that OpenCV can also be employed for the same task, but the visualization using scikit-image is better compared to that from OpenCV. A sample image for the HoG feature is as shown below:
+![image](https://github.com/drfuzzi/INF2009_ImageAnalytics/assets/52023898/94e7d597-c259-4634-a3dc-433c79e8533b)
+  -  Note the usage of colour (RGB) to gray scale converion employed before HoG feature extraction.
+  - Run the code with and without resizing the image and observe the resultant frame rate. It is important to note that for edge computing, downsizing the image will speed up the compute and many such informed decisions are critical.
+  - Change the patch size in line 25 (feature.hog) and observe the changes in the results.
+- The HoG features can be employed to identify the presence of face. An [example using OpenCV](Codes/image_human_capture.py) is available for experimenting with. A multiscale HoG feature extraction is employed in this case. This involves extracting HoG features at multiple scales (resolutions) of the given image. 
 
-**6. Storing and Visualizing Results (20 minutes)**
-- Saving processed images and videos.
-- Displaying images with detected features using OpenCV's visualization tools.
-- Introduction to more advanced analytics techniques, e.g., feature extraction, image classification.
+**6. Real-time Image Feature Analysis for Face Capture and Facial Landmark Extraction (20 minutes)**
+- In this work, A light weight machine learning library [Dlib](http://dlib.net/) is employed. Dlib is a modern C++ toolkit containing machine learning algorithms and tools for creating complex software in C++ to solve real world problems. We will be employing a python wrapper for Dlib. For facial landmark extraction, a python library [face_recognition](https://github.com/ageitgey/face_recognition) is employed which is built using Dlib and hence very light weight and apt for edge computing.
+-  Installing scikit-image:
+  ```bash
+  pip install dlib
+  pip install face_recognition  
+  ```
+- A [sample code](Codes/image_face_capture.py) is employed to detect the face based on Dlib's HoG feature extraction + Support Vector Machine (SVM) approach which is very light weight when comapred to the approach emplpoyed in above section. Observe the speed up.
+- A [sample code](Codes/image_live_facial_landmarks.py) is employed to extract the facial landmarks using the [face_recognition](https://github.com/ageitgey/face_recognition) libary. The approach is based on the facial landmark annotations as done in this [work](https://ibug.doc.ic.ac.uk/resources/facial-point-annotations/). A sample image with face landmarks is as shown below:
+  ![image](https://github.com/drfuzzi/INF2009_ImageAnalytics/assets/52023898/39ed6577-dbcb-4d3b-be02-5904ac15217d)
 
 ---
 
 **Homework/Extended Activities:**
-1. Build a basic motion detection system using the web camera.
-2. Explore more advanced OpenCV functionalities like SIFT, SURF, and ORB for feature detection.
-3. Build a simple image classification system using pre-trained models.
+1. Explore more advanced OpenCV functionalities like SIFT, SURF, and ORB for feature detection.
+2. Build an eye blink detection system for drowsiness detection.  
 
 ---
 
 **Resources:**
 1. Raspberry Pi official documentation.
 2. OpenCV documentation and tutorials.
-3. Relevant Python libraries documentation for image processing.
+3. Relevant Python libraries documentation for image processing (e.g., `opencv`, `scikit-image`, `Dlib`, `face_recognition`).
 
 ---
 
