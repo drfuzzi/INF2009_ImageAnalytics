@@ -64,7 +64,7 @@ In this lab, few basic and advanced image processing tasks on edge devices is in
 
 **6. Real-time Image Feature Analysis for Face Capture and Facial Landmark Extraction (20 minutes)**
 - In this work, A light weight machine learning library [Dlib](http://dlib.net/) is employed. Dlib is a modern C++ toolkit containing machine learning algorithms and tools for creating complex software in C++ to solve real world problems. We will be employing a python wrapper for Dlib. For facial landmark extraction, a python library [face_recognition](https://github.com/ageitgey/face_recognition) is employed which is built using Dlib and hence very light weight and apt for edge computing.
--  Installing scikit-image:
+-  Installing dlib and face_recognition:
   ```bash
   pip install dlib
   pip install face_recognition  
