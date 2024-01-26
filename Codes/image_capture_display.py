@@ -1,3 +1,4 @@
+# Reference: https://pyimagesearch.com/2014/08/04/opencv-python-color-detection/
 import cv2
 import numpy as np
 
