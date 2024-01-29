@@ -27,18 +27,18 @@ while True:
             top, right, bottom, left = face_location
             cv2.rectangle(frame, (left, top), (right, bottom), (0, 255, 0), 2)
         
-        # Extract the landmarks based on the standard face model
-        landmarks = face_recognition.face_landmarks(frame,[face_location])[0]
-        
-        #Draw circles for each facial landmark
-        for landmark_type, landmark_points in landmarks.items():
-            for point in landmark_points:
-                cv2.circle(frame,point,2,(0,0,255),-1)
+            # Extract the landmarks based on the standard face model
+            landmarks = face_recognition.face_landmarks(frame,[face_location])[0]
+            
+            #Draw circles for each facial landmark
+            for landmark_type, landmark_points in landmarks.items():
+                for point in landmark_points:
+                    cv2.circle(frame,point,2,(0,0,255),-1)
         
         
         cv2.imshow("frame",frame)    
         
-        if cv2.waitKey(1) & 0xFF == ord('q'):
+        if cv2.waitKey(10) == ord('q'):
            break
         
     
