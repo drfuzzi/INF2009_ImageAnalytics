@@ -39,7 +39,7 @@ while True:
         catImg = cv2.hconcat([frame,hogImg])        
         cv2.imshow("HOG Image", catImg)
         
-        if cv2.waitKey(10) == ord('q'):
+        if cv2.waitKey(1) & 0xFF == ord('q'):
            break
         
     except KeyboardInterrupt:
