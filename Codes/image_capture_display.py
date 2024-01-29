@@ -51,7 +51,7 @@ while True:
         catImg = cv2.hconcat([frame,red_img,green_img,blue_img])
         cv2.imshow("Images with Colours",catImg)
         
-        if cv2.waitKey(10) == ord('q'):
+        if cv2.waitKey(1) & 0xFF == ord('q'):
            break
    
     except KeyboardInterrupt:
