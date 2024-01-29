@@ -37,7 +37,7 @@ while True:
         cv2.imshow("frame",cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))    
         
         
-        if cv2.waitKey(10) == ord('q'):
+        if cv2.waitKey(1) & 0xFF == ord('q'):
            break
         
     
