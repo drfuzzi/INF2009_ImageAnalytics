@@ -26,7 +26,7 @@ In this lab, few basic and advanced image processing tasks on edge devices is in
   sudo apt update
   sudo apt upgrade
   ```
-- **[Important!] Set up and activate a virtual environment named "audio" for this experiment (to avoid conflicts in libraries) as below**
+- **[Important!] Set up and activate a virtual environment named "image" for this experiment (to avoid conflicts in libraries) as below**
   ```bash
   sudo apt install python3-venv
   python3 -m venv image
