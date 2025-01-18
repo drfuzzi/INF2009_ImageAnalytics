@@ -26,8 +26,11 @@ In this lab, few basic and advanced image processing tasks on edge devices is in
   sudo apt update
   sudo apt upgrade
   ```
-- **Set up a [virtual environment](https://github.com/drfuzzi/INF2009_Setup) for this experiment (to avoid conflicts in libraries) using the details mentioned in Section 4.a**
-- **Activate the virtual environment and complete the next steps within the environment**
+- **[Important!] Set up and activate a virtual environment named "audio" for this experiment (to avoid conflicts in libraries) as below**
+  ```bash
+  sudo apt install python3-venv
+  python3 -m venv image
+  source image/bin/activate
 
 **3. Connecting and Testing the Web Camera (15 minutes)**
 - Physically connecting the web camera to the Raspberry Pi.
