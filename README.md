@@ -32,18 +32,9 @@ In this lab, few basic and advanced image processing tasks on edge devices is in
   python3 -m venv image
   source image/bin/activate
 
-**3. Connecting and Testing the Web Camera (15 minutes)**
-- Physically connecting the web camera to the Raspberry Pi.
-- Installing necessary packages:
-  ```bash
-  sudo apt install fswebcam
-  ```
-- Capturing a test image:
-  ```bash
-  fswebcam image.jpg
-  ```
-- Observe the image (through VNC) in the current directory to ensure the image is correctly captured.
-
+**3. Connecting and Testing the Web Camera (5 minutes)**
+- Physically connect the web camera to the Raspberry Pi.
+  
 **4. Introduction to Real-time Image Processing with Python (25 minutes)**
 - Installing OpenCV:
   ```bash
@@ -66,18 +57,16 @@ In this lab, few basic and advanced image processing tasks on edge devices is in
 - The HoG features can be employed to identify the presence of face. An [example using OpenCV](Codes/image_human_capture.py) is available for experimenting with. A multiscale HoG feature extraction is employed in this case. This involves extracting HoG features at multiple scales (resolutions) of the given image. 
 
 **6. Real-time Image Feature Analysis for Face Capture and Facial Landmark Extraction (20 minutes)**
-- In this work, A light weight machine learning library [Dlib](http://dlib.net/) is employed. Dlib is a modern C++ toolkit containing machine learning algorithms and tools for creating complex software in C++ to solve real world problems. We will be employing a python wrapper for Dlib. For facial landmark extraction, a python library [face_recognition](https://github.com/ageitgey/face_recognition) is employed which is built using Dlib and hence very light weight and apt for edge computing.
--  Installing dlib and face_recognition:
-  - **[Important]** Dlib consumes reasonable RAM and hence direct pip installation may be tedious. Hence follow the steps as described in the [link](https://gist.github.com/chirag773/b4c94b5bb4b2e7fcac0d21680c5d4492) where we are essentially increasing swap file size to 1024MB from default size of 100MB. **Please make sure you revert back the swap file size to default setting of 100MB after completing the Dlib and face_recognition library installation**  
-  ```bash
-  pip install dlib
-  pip install face_recognition  
+- In this work, a light weight opensource library named *"Mediapipe"* for tasks such as face landmark detection, pose estimation, hand landmark detection, hand gesture recognition and object detection using pretrained neural network models.
+- [MediaPipe](https://developers.google.com/mediapipe) is a on-device (*embedded machine learning*) framework for building cross platform multimodal applied ML pipelines that consist of fast ML inference, classic computer vision, and media processing (e.g. video decoding). MediaPipe was open sourced at CVPR in June 2019 as v0.5.0 and has various lightweight models developed with Tensorflow lite available for usage.
+- Installing media pipe:
+  ```bash  
+  pip install mediapipe
   ```
-- Try the [sample code](Codes/image_face_capture.py) to detect the face based on Dlib's HoG feature extraction + Support Vector Machine (SVM) approach which is very light weight when comapred to the approach emplpoyed in above section. Observe the speed up.
-- [Optional] An opencv alternative (no dependence on dlib or face_recognition libararies) of the face detection is available in the [sample code](Codes/image_human_capture_opencv.py). If you are using this code, make sure you download the [Haar cascade model](https://raw.githubusercontent.com/opencv/opencv/master/data/haarcascades/haarcascade_frontalface_alt2.xml) manually and save it as 'haarcascade_frontalface_alt2.xml' in the same folder as the code. 
-- Try the [sample code](Codes/image_live_facial_landmarks.py) to extract the facial landmarks using the [face_recognition](https://github.com/ageitgey/face_recognition) libary. The approach is based on the facial landmark annotations as done in this [work](https://ibug.doc.ic.ac.uk/resources/facial-point-annotations/). A sample image with face landmarks is as shown below:
+- Try the [sample code](Codes/image_face_capture.py) to detect the face based on Mediapipe's approach which is very light weight when compared to the approach emplpoyed in above section. Observe the speed up. - A sample image with face landmarks is as shown below:
   ![image](https://github.com/drfuzzi/INF2009_ImageAnalytics/assets/52023898/39ed6577-dbcb-4d3b-be02-5904ac15217d)
 
+- [Optional] An opencv alternative (no dependence on mediapipe) of the face detection is available in the [sample code](Codes/image_human_capture_opencv.py). If you are using this code, make sure you download the [Haar cascade model](https://raw.githubusercontent.com/opencv/opencv/master/data/haarcascades/haarcascade_frontalface_alt2.xml) manually and save it as 'haarcascade_frontalface_alt2.xml' in the same folder as the code. 
 ---
 
 **Homework/Extended Activities:**
