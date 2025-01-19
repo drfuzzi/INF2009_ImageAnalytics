@@ -1,49 +1,59 @@
 import cv2
-import dlib
+import mediapipe as mp
 
+# Initialize Mediapipe Face Mesh
+mp_face_mesh = mp.solutions.face_mesh
+face_mesh = mp_face_mesh.FaceMesh(static_image_mode=False,
+                                  max_num_faces=1,
+                                  min_detection_confidence=0.5,
+                                  min_tracking_confidence=0.5)
 
-# dlib’s HOG + Linear SVM face detector (There is a CNN detector which is compute intensive)
-detector = dlib.get_frontal_face_detector() # Refer to http://dlib.net/face_detector.py.html for more information
+mp_drawing = mp.solutions.drawing_utils
+mp_drawing_styles = mp.solutions.drawing_styles
 
-
-#%% Open CV Video Capture and frame analysis
+# Open the camera feed
 cap = cv2.VideoCapture(0)
 
-# Check if the webcam is opened correctly
 if not cap.isOpened():
-    raise IOError("Cannot open webcam")
+    print("Error: Could not access the camera.")
+    exit()
 
-# The loop will break on pressing the 'q' key
-while True:
-    try:
-        # Capture one frame
-        ret, frame = cap.read()  
-        
-        # resizing for faster detection
-        frame = cv2.resize(frame, (256, 256)) #Uncomment and see the speed up
-        
-        # Convert the image to grayscale (Dlib works with grayscale images)
-        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-        
-        # Use the Dlib HoG + SVM for face detection
-        faces = detector(gray)
-        
-        # Extract face boundary and plot a rectangle bounding box
-        for face in faces:
-            x, y, w, h = (face.left(), face.top(), face.width(), face.height())
-            cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
-        
-        # Show the image
-        cv2.imshow("frame",cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))    
-        
-        
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-           break
-        
-    
-    except KeyboardInterrupt:
+while cap.isOpened():
+    ret, frame = cap.read()
+    if not ret:
+        print("Failed to grab frame.")
         break
 
+    # Convert frame to RGB
+    rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+
+    # Process the frame
+    results = face_mesh.process(rgb_frame)
+
+    # Draw landmarks
+    if results.multi_face_landmarks:
+        for face_landmarks in results.multi_face_landmarks:
+            mp_drawing.draw_landmarks(
+                image=frame,
+                landmark_list=face_landmarks,
+                connections=mp_face_mesh.FACEMESH_TESSELATION,
+                landmark_drawing_spec=None,
+                connection_drawing_spec=mp_drawing_styles.get_default_face_mesh_tesselation_style()
+            )
+            mp_drawing.draw_landmarks(
+                image=frame,
+                landmark_list=face_landmarks,
+                connections=mp_face_mesh.FACEMESH_CONTOURS,
+                landmark_drawing_spec=None,
+                connection_drawing_spec=mp_drawing_styles.get_default_face_mesh_contours_style()
+            )
+
+    # Display the frame
+    cv2.imshow('Mediapipe Face Mesh', frame)
+
+    # Exit on pressing 'q'
+    if cv2.waitKey(5) & 0xFF == ord('q'):
+        break
 
 cap.release()
 cv2.destroyAllWindows()
