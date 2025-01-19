@@ -1,11 +1,11 @@
-**Image Analytics with Raspberry Pi 4 using Web Camera**
+**Image Analytics with Raspberry Pi using Web Camera**
 
-**Objective:** By the end of this session, participants will understand how to set up a web camera with the Raspberry Pi 4, capture images, and perform basic and advanced image analytics.
+**Objective:** By the end of this session, participants will understand how to set up a web camera with the Raspberry Pi, capture images, and perform basic and advanced image analytics.
 
 ---
 
 **Prerequisites:**
-1. Raspberry Pi 4 with Raspbian OS installed.
+1. Raspberry Pi with Raspbian OS installed.
 2. MicroSD card (16GB or more recommended).
 3. Web camera compatible with Raspberry Pi (Will be using USB Webcam for this experiment).
 4. Internet connectivity (Wi-Fi).
@@ -35,13 +35,13 @@ In this lab, few basic and advanced image processing tasks on edge devices is in
 **3. Connecting and Testing the Web Camera (5 minutes)**
 - Physically connect the web camera to the Raspberry Pi.
   
-**4. Introduction to Real-time Image Processing with Python (25 minutes)**
+**. Introduction to Real-time Image Processing with Python (25 minutes)**
 - Installing OpenCV:
   ```bash
   pip install opencv-python  
   ```
 - The [sample code](Codes/image_capture_display.py) shows the code to read frames from a webcam and then based on the intensity range for each colour channel (RGB), how to segment the image into red green and blue images. A sample image and the colour segmentation is as shown below:
-  ![image](https://github.com/drfuzzi/INF2009_ImageAnalytics/assets/52023898/fd7c115d-0301-40d2-b2c1-7966d4ce3fec)
+  ![image](https://github.com/drfuzzi/INF2009_ImageAnalytics/assets/52023898/fd7c115d-0301-0d2-b2c1-7966dce3fec)
 - Expand the code to segment another colour (say yellow)
 
 **5. Real-time Image Analysis (25 minutes)**
