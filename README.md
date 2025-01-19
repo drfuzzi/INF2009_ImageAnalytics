@@ -64,12 +64,12 @@ In this lab, few basic and advanced image processing tasks on edge devices is in
   pip install mediapipe
   ```
 - Try the [sample code](Codes/image_face_capture.py) to detect the face based on Mediapipe's approach which is very light weight when compared to the approach emplpoyed in above section. Observe the speed up. - A sample image with face landmarks is as shown below:
-  ![image](https://github.com/drfuzzi/INF2009_ImageAnalytics/assets/52023898/39ed6577-dbcb-4d3b-be02-5904ac15217d)
+![Mediapipe Face Mesh_screenshot_18 01 2025](https://github.com/user-attachments/assets/3e952cbb-72df-4258-9d96-83f05c741096)
 
 - [Optional] An opencv alternative (no dependence on mediapipe) of the face detection is available in the [sample code](Codes/image_human_capture_opencv.py). If you are using this code, make sure you download the [Haar cascade model](https://raw.githubusercontent.com/opencv/opencv/master/data/haarcascades/haarcascade_frontalface_alt2.xml) manually and save it as 'haarcascade_frontalface_alt2.xml' in the same folder as the code. 
 ---
 
-**Homework/Extended Activities:**
+**[Optional] Homework/Extended Activities:**
 1. Explore more advanced OpenCV functionalities like SIFT, SURF, and ORB for feature detection. These features alongside HoG could be used for image matching (e.g. face recognition)
 2. Build an eye blink detection system for drowsiness detection.  
 
