@@ -78,7 +78,7 @@ In this lab, few basic and advanced image processing tasks on edge devices is in
 **Resources:**
 1. Raspberry Pi official documentation.
 2. OpenCV documentation and tutorials.
-3. Relevant Python libraries documentation for image processing (e.g., `opencv`, `scikit-image`, `Dlib`, `face_recognition`).
+3. Relevant Python libraries documentation for image processing (e.g., `opencv`, `scikit-image`, `mediapipe`).
 
 ---
 
